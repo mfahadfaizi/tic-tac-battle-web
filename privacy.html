@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Tic Tac Battle</title>
+  <meta name="description" content="Privacy Policy for Tic Tac Battle covering Firebase, Google AdMob, local device storage, and account deletion." />
+  <link rel="icon" type="image/png" href="./assets/app_icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Permanent+Marker&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a class="brand-link" href="index.html">
+        <img class="brand-icon" src="./assets/app_icon.png" alt="Tic Tac Battle icon" />
+        <span class="brand-wordmark">
+          <span class="brand-name">Tic Tac Battle</span>
+          <span class="brand-tag">Android Board Game</span>
+        </span>
+      </a>
+      <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#modes">Game Modes</a></li>
+        <li><a href="index.html#screenshots">Screens</a></li>
+        <li><a class="active" href="privacy.html">Privacy</a></li>
+        <li><a href="terms.html">Terms</a></li>
+        <li><a class="nav-cta" href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <section class="page-header">
+    <div class="container">
+      <h1>Privacy Policy</h1>
+      <p>
+        How Tic Tac Battle handles account details, online match state, local offline storage, and
+        Google AdMob advertising.
+      </p>
+      <span class="page-stamp">Effective: 2026</span>
+    </div>
+  </section>
+
+  <main class="doc-wrap">
+    <div class="container">
+      <article class="doc-article">
+        <h2>1. Data Collected by Feature</h2>
+        <p>
+          You can play offline against the Minimax AI or in Local Pass-and-Play without creating an account.
+          If you register or sign in for Online Multiplayer, Tic Tac Battle processes the minimum data required:
+        </p>
+        <ul>
+          <li>
+            <strong>Account Details (Firebase Authentication):</strong> Email address used for sign-in, display name,
+            chosen avatar identifier, and your Firebase User ID (UID).
+          </li>
+          <li>
+            <strong>Player Profile &amp; Stats (Cloud Firestore):</strong> ELO rating, XP, level, win/loss/draw counts,
+            match history logs, and daily virtual play credit timestamps.
+          </li>
+          <li>
+            <strong>Live Match State (Firebase Realtime Database):</strong> Online lobby presence status, outgoing/incoming
+            match challenges, and active 3&times;3 board moves.
+          </li>
+          <li>
+            <strong>Challenge Notifications (Firebase Cloud Messaging):</strong> An app-scoped device messaging token used
+            only to notify you of multiplayer game invites.
+          </li>
+        </ul>
+
+        <h2>2. Google AdMob Advertising</h2>
+        <p>
+          Tic Tac Battle is supported by <strong>Google AdMob</strong> using Banner, Interstitial, and optional
+          Rewarded video ad units (which grant extra virtual Play Credits).
+        </p>
+        <p>
+          Google AdMob and its advertising partners may process device advertising identifiers (Android Advertising ID),
+          IP address, coarse location signals, and ad interaction events to serve and measure ads in line with Google
+          policies. Read more at
+          <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Privacy &amp; Terms</a>.
+          You can reset your Advertising ID or opt out of personalized ads anytime in Android
+          <em>Settings &rarr; Google &rarr; Ads</em>.
+        </p>
+
+        <h2>3. Local Storage on Your Device</h2>
+        <ul>
+          <li><strong>Hive:</strong> Saves offline match history records locally on your device.</li>
+          <li><strong>SharedPreferences:</strong> Tracks local virtual Play Credits balance, daily reset date, and ad cadence counters.</li>
+        </ul>
+
+        <h2>4. Publicly Visible Profile Fields</h2>
+        <p>
+          Your display name, avatar, ELO rating, and win/loss counts are visible to other signed-in players inside
+          the Online Lobby and Leaderboard screens. Your authentication email address is never displayed publicly.
+        </p>
+
+        <h2>5. Data Sharing &amp; Retention</h2>
+        <p>
+          We do not sell personal data. Infrastructure data is processed solely by Google Firebase and Google AdMob
+          to run multiplayer gameplay and ad delivery. Local data is cleared when you uninstall the app or clear app storage.
+        </p>
+
+        <h2>6. Children&apos;s Privacy</h2>
+        <p>
+          Tic Tac Battle is not intended for children under 13 (or the applicable digital consent age in your country).
+          If an account was created in error by a minor, contact us so it can be deleted.
+        </p>
+
+        <h2>7. Requesting Account &amp; Data Deletion</h2>
+        <p>
+          To request permanent deletion of your Firebase Authentication account and Cloud Firestore profile data,
+          choose <strong>Account / Data Deletion Request</strong> on our <a href="contact.html">Contact Us page</a>.
+        </p>
+
+        <div class="doc-note">
+          Questions about this Privacy Policy can be sent anytime via the <a href="contact.html">Contact Us form</a>.
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <strong>Tic Tac Battle</strong>
+        <p>&copy; 2026 Muhammad Fahad Qureshi &middot; MIT License</p>
+      </div>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="index.html">Home</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms &amp; Conditions</a>
+        <a href="contact.html">Contact Us</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var btn = document.querySelector('.nav-toggle');
+      var links = document.querySelector('.nav-links');
+      if (btn && links) {
+        btn.addEventListener('click', function () {
+          var isOpen = links.classList.toggle('open');
+          btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

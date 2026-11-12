@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tic Tac Battle — Online 1v1 &amp; Minimax Tic Tac Toe</title>
+  <meta name="description" content="Tic Tac Battle is a Flutter Android game with live 1v1 online multiplayer, an unbeatable Minimax AI, ELO rankings, and local pass-and-play." />
+  <link rel="icon" type="image/png" href="./assets/app_icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Permanent+Marker&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a class="brand-link" href="index.html">
+        <img class="brand-icon" src="./assets/app_icon.png" alt="Tic Tac Battle icon" />
+        <span class="brand-wordmark">
+          <span class="brand-name">Tic Tac Battle</span>
+          <span class="brand-tag">Android Board Game</span>
+        </span>
+      </a>
+      <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
+      <ul class="nav-links">
+        <li><a class="active" href="index.html">Home</a></li>
+        <li><a href="#modes">Game Modes</a></li>
+        <li><a href="#screenshots">Screens</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="terms.html">Terms</a></li>
+        <li><a class="nav-cta" href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">
+            <span class="eyebrow-x">X</span>
+            <span>vs</span>
+            <span class="eyebrow-o">O</span>
+            <span>&middot; Real-Time Multiplayer &amp; Offline AI</span>
+          </div>
+          <h1 class="hero-title">
+            Three in a row, built for <span class="mark-x">live</span> <span class="mark-o">duels</span>.
+          </h1>
+          <p class="hero-copy">
+            Tic Tac Battle brings quick tabletop matches to Android with real-time online matchmaking,
+            an unbeatable Minimax AI trainer, local two-player rounds, and an ELO leaderboard synced to the cloud.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#screenshots">See App Screenshots</a>
+            <a class="btn btn-secondary" href="contact.html">Contact Developer</a>
+          </div>
+          <div class="hero-facts">
+            <span><strong>Modes:</strong> Online 1v1, AI, Local</span>
+            <span><strong>Avatars:</strong> 12 unlocked free</span>
+            <span><strong>Sync:</strong> Firebase &amp; Hive offline cache</span>
+          </div>
+        </div>
+
+        <div class="board-card" aria-label="Interactive Tic Tac Toe preview board">
+          <div class="board-top">
+            <span class="board-title">Quick Warm-Up Board</span>
+            <span class="board-status" id="boardStatus">X moves first</span>
+          </div>
+          <div class="mini-board" id="miniBoard" role="grid" aria-label="3 by 3 board">
+            <button class="cell-btn" type="button" data-idx="0" aria-label="Row 1 column 1"></button>
+            <button class="cell-btn" type="button" data-idx="1" aria-label="Row 1 column 2"></button>
+            <button class="cell-btn" type="button" data-idx="2" aria-label="Row 1 column 3"></button>
+            <button class="cell-btn" type="button" data-idx="3" aria-label="Row 2 column 1"></button>
+            <button class="cell-btn" type="button" data-idx="4" aria-label="Row 2 column 2"></button>
+            <button class="cell-btn" type="button" data-idx="5" aria-label="Row 2 column 3"></button>
+            <button class="cell-btn" type="button" data-idx="6" aria-label="Row 3 column 1"></button>
+            <button class="cell-btn" type="button" data-idx="7" aria-label="Row 3 column 2"></button>
+            <button class="cell-btn" type="button" data-idx="8" aria-label="Row 3 column 3"></button>
+          </div>
+          <div class="board-footer">
+            <span>Tap any square to play X vs O locally</span>
+            <button class="reset-link" id="resetBoard" type="button">Reset Board</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="banner-band">
+      <div class="container banner-layout">
+        <div class="graphic-frame">
+          <img src="./assets/feature_graphic.png" alt="Tic Tac Battle feature banner" />
+        </div>
+        <aside class="spec-ledger">
+          <div>
+            <h2>App Overview</h2>
+            <div class="spec-row"><span>Platform</span><span>Android (Flutter)</span></div>
+            <div class="spec-row"><span>Multiplayer</span><span>Firebase RTDB + FCM</span></div>
+            <div class="spec-row"><span>Cloud Profile</span><span>Firestore ELO &amp; XP</span></div>
+            <div class="spec-row"><span>Offline Storage</span><span>Hive + SharedPrefs</span></div>
+            <div class="spec-row"><span>Monetization</span><span>Free (Google AdMob)</span></div>
+            <div class="spec-row"><span>Source License</span><span>MIT License</span></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="modes">
+      <div class="container">
+        <div class="section-head">
+          <h2>What Is Inside the Game</h2>
+          <p>Designed around clean match flow, zero paywalls, and full offline/online parity.</p>
+        </div>
+
+        <div class="modes-grid">
+          <article class="mode-card">
+            <div class="mode-num x-bg">01</div>
+            <div>
+              <h3>Real-Time Online 1v1 Lobby</h3>
+              <p>
+                See active players currently online, challenge anyone in one tap via Firebase Cloud Messaging
+                push notifications, and sync every move instantaneously over Firebase Realtime Database.
+              </p>
+            </div>
+          </article>
+
+          <article class="mode-card">
+            <div class="mode-num o-bg">02</div>
+            <div>
+              <h3>Minimax AI &amp; Local Pass-and-Play</h3>
+              <p>
+                Play without internet against a Minimax game-tree opponent or sit side-by-side with a friend
+                using custom player names and local match scoring.
+              </p>
+            </div>
+          </article>
+
+          <article class="mode-card">
+            <div class="mode-num g-bg">03</div>
+            <div>
+              <h3>ELO Ladder, XP &amp; 12 Free Avatars</h3>
+              <p>
+                Every match updates your win/loss/draw totals, XP level bar, and ELO rating on the global
+                leaderboard. All 12 player avatars are unlocked for everyone with no paid subscription.
+              </p>
+            </div>
+          </article>
+
+          <article class="mode-card">
+            <div class="mode-num a-bg">04</div>
+            <div>
+              <h3>Daily Credits &amp; Match History</h3>
+              <p>
+                Get 10 free online play credits automatically each day, top up +3 anytime with an optional
+                Rewarded Ad, and review full match logs stored in Cloud Firestore and local Hive storage.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-alt" id="screenshots">
+      <div class="container">
+        <div class="section-head">
+          <h2>Inside the App</h2>
+          <p>Screenshots captured from Android builds of Tic Tac Battle.</p>
+        </div>
+
+        <div class="screens-grid">
+          <figure class="screen-card">
+            <img src="./assets/screenshots/screenshot_1_home.png" alt="Tic Tac Battle Home Screen" />
+            <figcaption>
+              <div class="screen-meta">
+                <strong>Main Menu</strong>
+                <span>01</span>
+              </div>
+              <p class="screen-desc">Jump straight into Online, AI, or Local 2-player rounds.</p>
+            </figcaption>
+          </figure>
+
+          <figure class="screen-card">
+            <img src="./assets/screenshots/screenshot_2_battle.png" alt="Tic Tac Battle Board" />
+            <figcaption>
+              <div class="screen-meta">
+                <strong>Battle Board</strong>
+                <span>02</span>
+              </div>
+              <p class="screen-desc">Scoreboard, turn indicator, sound cues, and animated wins.</p>
+            </figcaption>
+          </figure>
+
+          <figure class="screen-card">
+            <img src="./assets/screenshots/screenshot_3_lobby.png" alt="Tic Tac Battle Online Lobby" />
+            <figcaption>
+              <div class="screen-meta">
+                <strong>Online Lobby</strong>
+                <span>03</span>
+              </div>
+              <p class="screen-desc">Live player availability with one-tap challenge invites.</p>
+            </figcaption>
+          </figure>
+
+          <figure class="screen-card">
+            <img src="./assets/screenshots/screenshot_4_profile.png" alt="Tic Tac Battle Profile" />
+            <figcaption>
+              <div class="screen-meta">
+                <strong>Profile &amp; ELO</strong>
+                <span>04</span>
+              </div>
+              <p class="screen-desc">Player stats, XP progression, and avatar customization.</p>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="support-strip">
+      <div class="container">
+        <div class="support-box">
+          <div>
+            <h2>Need Help or Account Data Deletion?</h2>
+            <p>
+              Questions about online matchmaking, bug reports, Google Play privacy compliance, or
+              removing your online account can be sent directly through our support form.
+            </p>
+          </div>
+          <a class="btn btn-primary" href="contact.html">Open Contact Form</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <strong>Tic Tac Battle</strong>
+        <p>&copy; 2026 Muhammad Fahad Qureshi &middot; MIT License</p>
+      </div>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="index.html">Home</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms &amp; Conditions</a>
+        <a href="contact.html">Contact Us</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var btn = document.querySelector('.nav-toggle');
+      var links = document.querySelector('.nav-links');
+      if (btn && links) {
+        btn.addEventListener('click', function () {
+          var isOpen = links.classList.toggle('open');
+          btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+      }
+
+      var cells = document.querySelectorAll('#miniBoard .cell-btn');
+      var statusEl = document.getElementById('boardStatus');
+      var resetBtn = document.getElementById('resetBoard');
+      var board = ['', '', '', '', '', '', '', '', ''];
+      var turn = 'X';
+      var finished = false;
+      var lines = [
+        [0, 1, 2], [3, 4, 5], [6, 7, 8],
+        [0, 3, 6], [1, 4, 7], [2, 5, 8],
+        [0, 4, 8], [2, 4, 6]
+      ];
+
+      function checkWinner() {
+        for (var i = 0; i < lines.length; i++) {
+          var a = lines[i][0], b = lines[i][1], c = lines[i][2];
+          if (board[a] && board[a] === board[b] && board[a] === board[c]) {
+            return lines[i];
+          }
+        }
+        return null;
+      }
+
+      function resetGame() {
+        board = ['', '', '', '', '', '', '', '', ''];
+        turn = 'X';
+        finished = false;
+        statusEl.textContent = 'X moves first';
+        statusEl.className = 'board-status';
+        cells.forEach(function (cell) {
+          cell.textContent = '';
+          cell.className = 'cell-btn';
+          cell.disabled = false;
+        });
+      }
+
+      cells.forEach(function (cell) {
+        cell.addEventListener('click', function () {
+          var idx = parseInt(cell.getAttribute('data-idx'), 10);
+          if (finished || board[idx]) return;
+
+          board[idx] = turn;
+          cell.textContent = turn;
+          cell.classList.add(turn.toLowerCase());
+          cell.disabled = true;
+
+          var winLine = checkWinner();
+          if (winLine) {
+            finished = true;
+            statusEl.textContent = turn + ' wins the round';
+            statusEl.className = 'board-status win';
+            winLine.forEach(function (w) {
+              cells[w].classList.add('winner');
+            });
+            cells.forEach(function (c) { c.disabled = true; });
+            return;
+          }
+
+          if (board.every(function (v) { return v !== ''; })) {
+            finished = true;
+            statusEl.textContent = 'Draw round';
+            return;
+          }
+
+          turn = turn === 'X' ? 'O' : 'X';
+          statusEl.textContent = turn + ' to move';
+        });
+      });
+
+      if (resetBtn) {
+        resetBtn.addEventListener('click', resetGame);
+      }
+    })();
+  </script>
+</body>
+</html>

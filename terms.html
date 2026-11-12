@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms &amp; Conditions — Tic Tac Battle</title>
+  <meta name="description" content="Terms and Conditions for using the Tic Tac Battle Android application." />
+  <link rel="icon" type="image/png" href="./assets/app_icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Permanent+Marker&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav-inner">
+      <a class="brand-link" href="index.html">
+        <img class="brand-icon" src="./assets/app_icon.png" alt="Tic Tac Battle icon" />
+        <span class="brand-wordmark">
+          <span class="brand-name">Tic Tac Battle</span>
+          <span class="brand-tag">Android Board Game</span>
+        </span>
+      </a>
+      <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#modes">Game Modes</a></li>
+        <li><a href="index.html#screenshots">Screens</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a class="active" href="terms.html">Terms</a></li>
+        <li><a class="nav-cta" href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <section class="page-header">
+    <div class="container">
+      <h1>Terms &amp; Conditions</h1>
+      <p>
+        Rules governing use of the Tic Tac Battle mobile application and companion support pages.
+      </p>
+      <span class="page-stamp">Effective: 2026</span>
+    </div>
+  </section>
+
+  <main class="doc-wrap">
+    <div class="container">
+      <article class="doc-article">
+        <h2>1. Agreement to Terms</h2>
+        <p>
+          By installing or playing Tic Tac Battle, you agree to these Terms &amp; Conditions and our
+          <a href="privacy.html">Privacy Policy</a>. If you do not agree, do not use the application.
+        </p>
+
+        <h2>2. Software License (MIT)</h2>
+        <p>
+          The Tic Tac Battle application codebase is released under the <strong>MIT License</strong>.
+          You may study, modify, and redistribute source code subject to the conditions of the MIT License file
+          accompanying the project.
+        </p>
+
+        <h2>3. Free Play, Advertisements &amp; Virtual Credits</h2>
+        <ul>
+          <li>Tic Tac Battle is free to play with no paid subscriptions or in-app purchases.</li>
+          <li>The app serves Banner, Interstitial, and optional Rewarded ads via Google AdMob.</li>
+          <li>Online matches use virtual Play Credits (10 free daily credits per player, plus +3 credits per completed optional Rewarded Ad).</li>
+          <li>Virtual Play Credits, XP, avatars, and ELO points have zero real-world monetary value and cannot be traded or redeemed.</li>
+        </ul>
+
+        <h2>4. Fair Play &amp; Conduct</h2>
+        <p>When using online lobbies or leaderboards, you agree not to:</p>
+        <ul>
+          <li>Manipulate ELO ratings, credits, or match results using modified clients, bots, or scripts.</li>
+          <li>Use abusive or impersonating display names.</li>
+          <li>Spam match requests or disrupt Firebase services.</li>
+        </ul>
+        <p>
+          Accounts violating fair play or service integrity may have rankings reset or access restricted.
+        </p>
+
+        <h2>5. Availability &amp; Disclaimer</h2>
+        <p>
+          Online gameplay relies on third-party infrastructure (Google Firebase) and active internet access.
+          Tic Tac Battle is provided &ldquo;as is&rdquo; without warranties of uninterrupted availability.
+          To the maximum extent permitted by law, Muhammad Fahad Qureshi is not liable for indirect or incidental
+          damages arising from app use, downtime, or third-party ad content.
+        </p>
+
+        <div class="doc-note">
+          Need clarification on these terms? Reach out through our <a href="contact.html">Contact Us page</a>.
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <strong>Tic Tac Battle</strong>
+        <p>&copy; 2026 Muhammad Fahad Qureshi &middot; MIT License</p>
+      </div>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="index.html">Home</a>
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms &amp; Conditions</a>
+        <a href="contact.html">Contact Us</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var btn = document.querySelector('.nav-toggle');
+      var links = document.querySelector('.nav-links');
+      if (btn && links) {
+        btn.addEventListener('click', function () {
+          var isOpen = links.classList.toggle('open');
+          btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
