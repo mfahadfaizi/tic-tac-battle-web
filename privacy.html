@@ -68,8 +68,13 @@
             match challenges, and active 3&times;3 board moves.
           </li>
           <li>
-            <strong>Challenge Notifications (Firebase Cloud Messaging):</strong> An app-scoped device messaging token used
-            only to notify you of multiplayer game invites.
+            <strong>Ephemeral In-Game Reactions:</strong> During active online matches, players may exchange pre-defined emojis
+            and friendly canned phrases. These reactions are ephemeral, routed in volatile real-time memory during the active game session,
+            are never stored in persistent databases or match history logs, and are automatically deleted when the game session ends.
+          </li>
+          <li>
+            <strong>Challenge &amp; Engagement Notifications (Firebase Cloud Messaging &amp; Local Notifications):</strong> An app-scoped device messaging token used
+            to deliver multiplayer match invites, and scheduled local reminders (such as virtual Play Credit refills and daily match milestones).
           </li>
         </ul>
 
