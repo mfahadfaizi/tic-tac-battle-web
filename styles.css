@@ -945,3 +945,21 @@ textarea.form-control {
     padding: 24px 20px;
   }
 }
+
+/* AdSense Banners */
+.ad-container {
+  margin: 32px auto;
+  padding: 16px;
+  background: var(--surface);
+  border: 2px dashed var(--rule);
+  border-radius: var(--radius);
+  text-align: center;
+  min-height: 90px;
+}
+.ad-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-muted);
+  margin-bottom: 8px;
+}
