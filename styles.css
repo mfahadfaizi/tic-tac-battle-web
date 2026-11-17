@@ -946,20 +946,111 @@ textarea.form-control {
   }
 }
 
-/* AdSense Banners */
+/* AdSense Banners & Sponsored Showcase */
 .ad-container {
   margin: 32px auto;
-  padding: 16px;
+  padding: 20px;
   background: var(--surface);
-  border: 2px dashed var(--rule);
+  border: 2px solid var(--ink);
   border-radius: var(--radius);
-  text-align: center;
-  min-height: 90px;
+  text-align: left;
+  box-shadow: var(--shadow-hard);
+  position: relative;
+  overflow: hidden;
 }
 .ad-label {
   font-size: 11px;
+  font-weight: 700;
   text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--amber);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.house-ad-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.house-ad-badge {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 10px;
+  font-weight: 800;
   letter-spacing: 0.08em;
+  padding: 3px 8px;
+  background: var(--cobalt-tint);
+  color: var(--cobalt);
+  border: 1px solid var(--cobalt);
+  border-radius: 4px;
+}
+.house-ad-body {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.house-ad-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  border: 2px solid var(--ink);
+  box-shadow: 2px 2px 0 var(--ink);
+  flex-shrink: 0;
+}
+.house-ad-info {
+  flex: 1;
+  min-width: 240px;
+}
+.house-ad-title {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+.house-ad-desc {
+  font-size: 13px;
+  color: var(--ink-soft);
+  line-height: 1.4;
+  margin-bottom: 6px;
+}
+.house-ad-rating {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 700;
+}
+.house-ad-rating .stars {
+  color: #f59e0b;
+  letter-spacing: 2px;
+}
+.house-ad-rating .rating-text {
   color: var(--ink-muted);
-  margin-bottom: 8px;
+}
+.house-ad-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+@media (max-width: 640px) {
+  .house-ad-body {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .house-ad-btn {
+    width: 100%;
+    justify-content: center;
+  }
 }
