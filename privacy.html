@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Privacy Policy — Tic Tac Battle</title>
-  <meta name="description" content="Privacy Policy for Tic Tac Battle covering Firebase, Google AdMob, local device storage, and account deletion." />
+  <meta name="description" content="Privacy Policy for Tic Tac Battle covering data collection, Firebase, Google AdMob, GDPR, CCPA, and data deletion rights." />
   <link rel="icon" type="image/png" href="./assets/app_icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -20,17 +20,18 @@
         <img class="brand-icon" src="./assets/app_icon.png" alt="Tic Tac Battle icon" />
         <span class="brand-wordmark">
           <span class="brand-name">Tic Tac Battle</span>
-          <span class="brand-tag">Android Board Game</span>
+          <span class="brand-tag">Online &amp; AI Board Game</span>
         </span>
       </a>
       <button class="nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="index.html#modes">Game Modes</a></li>
+        <li><a href="index.html#features">Features</a></li>
         <li><a href="index.html#screenshots">Screens</a></li>
         <li><a class="active" href="privacy.html">Privacy</a></li>
         <li><a href="terms.html">Terms</a></li>
-        <li><a class="nav-cta" href="contact.html">Contact</a></li>
+        <li><a class="nav-cta" href="contact.html">Support</a></li>
       </ul>
     </div>
   </header>
@@ -39,136 +40,126 @@
     <div class="container">
       <h1>Privacy Policy</h1>
       <p>
-        How Tic Tac Battle handles account details, online match state, local offline storage, and
-        Google AdMob advertising.
+        How Tic Tac Battle collects, uses, and safeguards account details, game sessions, and advertising data.
       </p>
-      <span class="page-stamp">Effective: 2026</span>
+      <span class="page-stamp">Last Updated: November 2026</span>
     </div>
   </section>
 
   <main class="doc-wrap">
     <div class="container">
       <article class="doc-article">
-        <h2>1. Data Collected by Feature</h2>
+        <h2>1. Overview &amp; Scope</h2>
         <p>
-          You can play offline against the Minimax AI or in Local Pass-and-Play without creating an account.
-          If you register or sign in for Online Multiplayer, Tic Tac Battle processes the minimum data required:
+          This Privacy Policy governs your use of the mobile application <strong>Tic Tac Battle: Online &amp; AI</strong>
+          and its companion website. We believe in minimal data collection: you can play against the Minimax AI or in
+          Local Pass &amp; Play completely offline without creating an account or transmitting personal data.
+        </p>
+
+        <h2>2. Data Collected for Online Services</h2>
+        <p>
+          When you create an account to play online multiplayer, the following limited information is processed:
         </p>
         <ul>
           <li>
-            <strong>Account Details (Firebase Authentication):</strong> Email address used for sign-in, display name,
-            chosen avatar identifier, and your Firebase User ID (UID).
+            <strong>Account Credentials (Firebase Authentication):</strong> Your email address, display name, chosen avatar ID,
+            and an encrypted User ID (UID).
           </li>
           <li>
-            <strong>Player Profile &amp; Stats (Cloud Firestore):</strong> ELO rating, XP, level, win/loss/draw counts,
-            match history logs, and daily virtual play credit timestamps.
+            <strong>Profile &amp; Gameplay Statistics (Cloud Firestore):</strong> ELO rating, XP level, total wins/losses/draws,
+            timestamped match history logs, virtual play ticket counters, and daily reward streak dates.
           </li>
           <li>
-            <strong>Live Match State (Firebase Realtime Database):</strong> Online lobby presence status, outgoing/incoming
-            match challenges, and active 3&times;3 board moves.
+            <strong>Live Online Match State (Firebase Realtime Database):</strong> Lobby presence, match challenge invitations,
+            and live grid coordinates (3&times;3, 4&times;4, 5&times;5, 6&times;6).
           </li>
           <li>
-            <strong>Ephemeral In-Game Reactions:</strong> During active online matches, players may exchange pre-defined emojis
-            and friendly canned phrases. These reactions are ephemeral, routed in volatile real-time memory during the active game session,
-            are never stored in persistent databases or match history logs, and are automatically deleted when the game session ends.
+            <strong>Ephemeral In-Game Reactions:</strong> During an active online game, players may tap pre-defined emojis or
+            short friendly phrases. These reactions are ephemeral, stored only in temporary memory during the active match session,
+            <strong>never recorded in persistent databases or chat logs</strong>, and automatically purged when the game concludes.
           </li>
           <li>
-            <strong>Challenge &amp; Engagement Notifications (Firebase Cloud Messaging &amp; Local Notifications):</strong> An app-scoped device messaging token used
-            to deliver multiplayer match invites, and scheduled local reminders (such as virtual Play Credit refills and daily match milestones).
+            <strong>Device Notifications (Firebase Cloud Messaging &amp; Local Notifications):</strong> A device push token
+            used solely to alert you of incoming match challenges and scheduled local reminders (such as hourly ticket refills
+            and daily reward resets).
           </li>
         </ul>
 
-        <h2>2. Google AdMob Advertising</h2>
+        <h2>3. Advertising &amp; Google AdMob</h2>
         <p>
-          Tic Tac Battle is supported by <strong>Google AdMob</strong> using Banner, Interstitial, and optional
-          Rewarded video ad units (which grant extra virtual Play Credits).
+          Tic Tac Battle is free to play and supported by <strong>Google AdMob</strong>. Depending on your region,
+          AdMob and its certified ad network partners may collect device identifiers (such as the Google Advertising ID),
+          IP address, coarse location, and ad interaction telemetry to deliver non-personalized or personalized ads.
         </p>
         <p>
-          Google AdMob and its advertising partners may process device advertising identifiers (Android Advertising ID),
-          IP address, coarse location signals, and ad interaction events to serve and measure ads in line with Google
-          policies. Read more at
-          <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Google Privacy &amp; Terms</a>.
-          You can reset your Advertising ID or opt out of personalized ads anytime in Android
-          <em>Settings &rarr; Google &rarr; Ads</em>.
+          <strong>Ad-Free Entitlements:</strong> Players can earn temporary 100% ad-free gameplay by claiming the Day 7
+          weekly reward (1 hour ad-free) or completing the 5-Ad Challenge (30 minutes ad-free). VIP players
+          (<code>isPremium</code>) have all interstitial navigation ads permanently disabled.
+        </p>
+        <p>
+          To opt out of personalized ads, visit your Android device settings under
+          <em>Settings &rarr; Google &rarr; Ads</em> and enable &ldquo;Delete advertising ID&rdquo; or reset your ad settings.
         </p>
 
-        <h2>3. Local Storage on Your Device</h2>
+        <h2>4. Regional Rights: GDPR (UK &amp; EU) &amp; CCPA (United States)</h2>
+        <p>
+          We comply with international data protection standards, including the General Data Protection Regulation (GDPR)
+          for users in the United Kingdom and European Union, and the California Consumer Privacy Act (CCPA) for US residents:
+        </p>
         <ul>
-          <li><strong>Hive:</strong> Saves offline match history records locally on your device.</li>
-          <li><strong>SharedPreferences:</strong> Tracks local virtual Play Credits balance, daily reset date, and ad cadence counters.</li>
+          <li><strong>Right to Access:</strong> You have the right to request a copy of the personal data stored with your account.</li>
+          <li><strong>Right to Rectification:</strong> You can update your display name and avatar at any time in your player profile.</li>
+          <li><strong>Right to Erasure (Account Deletion):</strong> You can request complete deletion of your account, email, ELO ranking, and match history.</li>
+          <li><strong>No Sale of Personal Data:</strong> We never sell, rent, or monetize your personal information to data brokers or third parties.</li>
         </ul>
 
-        <h2>4. Publicly Visible Profile Fields</h2>
+        <h2>5. Data Retention &amp; Account Deletion</h2>
         <p>
-          Your display name, avatar, ELO rating, and win/loss counts are visible to other signed-in players inside
-          the Online Lobby and Leaderboard screens. Your authentication email address is never displayed publicly.
+          Your profile information is retained only as long as your account is active. To permanently delete your account
+          and all associated records from Cloud Firestore and Firebase Authentication, submit an account removal request
+          via our <a href="contact.html">Support Form</a> with your registered email address. Requests are processed within 48 hours.
         </p>
 
-        <h2>5. Data Sharing &amp; Retention</h2>
+        <h2>6. Children&rsquo;s Privacy</h2>
         <p>
-          We do not sell personal data. Infrastructure data is processed solely by Google Firebase and Google AdMob
-          to run multiplayer gameplay and ad delivery. Local data is cleared when you uninstall the app or clear app storage.
+          Tic Tac Battle is designed for general audiences and does not knowingly collect personally identifiable information
+          from children under the age of 13 (or under 16 in the EEA/UK). If you believe a child has provided us with personal
+          data, please contact us immediately for prompt deletion.
         </p>
 
-        <h2>6. Children&apos;s Privacy</h2>
+        <h2>7. Contacting Us</h2>
         <p>
-          Tic Tac Battle is not intended for children under 13 (or the applicable digital consent age in your country).
-          If an account was created in error by a minor, contact us so it can be deleted.
+          If you have questions about this Privacy Policy or our data handling practices, contact our developer team at:
+          <br />
+          <strong>Email:</strong> <a href="mailto:mfahadfaizi@gmail.com">mfahadfaizi@gmail.com</a>
+          <br />
+          <strong>Developer:</strong> Muhammad Fahad Qureshi
         </p>
-
-        <h2>7. Requesting Account &amp; Data Deletion</h2>
-        <p>
-          To request permanent deletion of your Firebase Authentication account and Cloud Firestore profile data,
-          choose <strong>Account / Data Deletion Request</strong> on our <a href="contact.html">Contact Us page</a>.
-        </p>
-
-        <div class="doc-note">
-          Questions about this Privacy Policy can be sent anytime via the <a href="contact.html">Contact Us form</a>.
-        </div>
       </article>
-
-      <!-- Google AdSense Unit -->
-      <div class="ad-container">
-        <div class="ad-label">Advertisement</div>
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-8814260653330173"
-             data-ad-slot="5909454641"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
-        <script>
-             (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-      </div>
     </div>
   </main>
 
   <footer class="site-footer">
     <div class="container footer-inner">
       <div class="footer-brand">
-        <strong>Tic Tac Battle</strong>
-        <p>&copy; 2026 Muhammad Fahad Qureshi &middot; MIT License</p>
+        <strong>Tic Tac Battle: Online &amp; AI</strong>
+        <p>A strategic multiplayer tabletop game built with Flutter &amp; Firebase.</p>
       </div>
-      <nav class="footer-links" aria-label="Footer navigation">
-        <a href="index.html">Home</a>
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="terms.html">Terms &amp; Conditions</a>
-        <a href="contact.html">Contact Us</a>
-      </nav>
+      <div class="footer-links">
+        <div>
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#modes">Modes</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="container copyright">
+      <p>&copy; 2026 Muhammad Fahad Qureshi. All rights reserved.</p>
     </div>
   </footer>
-
-  <script>
-    (function () {
-      var btn = document.querySelector('.nav-toggle');
-      var links = document.querySelector('.nav-links');
-      if (btn && links) {
-        btn.addEventListener('click', function () {
-          var isOpen = links.classList.toggle('open');
-          btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-        });
-      }
-    })();
-  </script>
 </body>
 </html>
