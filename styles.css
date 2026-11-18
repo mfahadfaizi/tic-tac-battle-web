@@ -958,6 +958,15 @@ textarea.form-control {
   position: relative;
   overflow: hidden;
 }
+.ad-container ins.adsbygoogle {
+  min-height: 0;
+  transition: all 0.3s ease;
+}
+.ad-container ins.adsbygoogle[data-ad-status="filled"] {
+  margin-top: 16px;
+  border-top: 1px dashed var(--rule);
+  padding-top: 16px;
+}
 .ad-label {
   font-size: 11px;
   font-weight: 700;
