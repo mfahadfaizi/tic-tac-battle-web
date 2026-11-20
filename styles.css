@@ -92,6 +92,7 @@ img {
   justify-content: space-between;
   min-height: 70px;
   gap: 16px;
+  position: relative;
 }
 
 .brand-link {
@@ -353,6 +354,13 @@ img {
 .board-status.win {
   background: var(--emerald-tint);
   color: var(--emerald);
+  border-color: var(--emerald);
+}
+
+.board-status.draw {
+  background: #FEF3C7;
+  color: #B45309;
+  border-color: #D97706;
 }
 
 .mini-board {
@@ -915,20 +923,43 @@ textarea.form-control {
 @media (max-width: 720px) {
   .nav-toggle {
     display: inline-flex;
+    flex-shrink: 0;
+  }
+
+  .brand-link {
+    min-width: 0;
+    gap: 10px;
+  }
+
+  .brand-wordmark {
+    min-width: 0;
+  }
+
+  .brand-name {
+    font-size: 0.98rem;
+    white-space: nowrap;
+  }
+
+  .brand-tag {
+    font-size: 0.68rem;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
   }
 
   .nav-links {
     display: none;
     position: absolute;
-    top: 70px;
-    left: 0;
-    right: 0;
-    background: var(--paper);
+    top: calc(100% + 2px);
+    left: -24px;
+    right: -24px;
+    background: var(--surface);
     border-bottom: 2px solid var(--ink);
+    box-shadow: 0 10px 25px rgba(21, 23, 26, 0.2);
     flex-direction: column;
     align-items: stretch;
-    padding: 14px 24px 18px;
-    gap: 8px;
+    padding: 16px 24px 20px;
+    gap: 10px;
+    z-index: 100;
   }
 
   .nav-links.open {
@@ -943,6 +974,41 @@ textarea.form-control {
   .doc-article,
   .form-panel {
     padding: 24px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  .nav-links {
+    left: -16px;
+    right: -16px;
+    padding: 14px 16px 18px;
+  }
+
+  .brand-tag {
+    display: none;
+  }
+
+  .brand-icon {
+    width: 34px;
+    height: 34px;
+  }
+
+  .hero-title {
+    font-size: clamp(1.85rem, 8vw, 2.35rem);
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+    justify-content: center;
   }
 }
 

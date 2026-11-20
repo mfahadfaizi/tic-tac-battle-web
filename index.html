@@ -305,16 +305,15 @@
             </a>
           </div>
         </div>
-        <!-- Google AdSense Container -->
+        <!-- Google AdSense Container (Tic Tac Battle Web Banner) -->
         <ins class="adsbygoogle"
              style="display:block"
              data-ad-client="ca-pub-8814260653330173"
+             data-ad-slot="4510985756"
              data-ad-format="auto"
              data-full-width-responsive="true"></ins>
         <script>
-          try {
-            (adsbygoogle = window.adsbygoogle || []).push({});
-          } catch(e) {}
+          (adsbygoogle = window.adsbygoogle || []).push({});
         </script>
       </div>
     </div>
@@ -422,5 +421,199 @@
       <p>&copy; 2026 Muhammad Fahad Qureshi. All rights reserved. Google Play and the Google Play logo are trademarks of Google LLC.</p>
     </div>
   </footer>
+
+  <script>
+    // --- Mobile Navigation Toggle ---
+    (function initNav() {
+      const navToggle = document.querySelector('.nav-toggle');
+      const navLinks = document.querySelector('.nav-links');
+      if (!navToggle || !navLinks) return;
+
+      navToggle.addEventListener('click', function (e) {
+        e.stopPropagation();
+        const isOpen = navLinks.classList.toggle('open');
+        navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        navToggle.innerHTML = isOpen ? '&times;' : '&#9776;';
+      });
+
+      // Close menu when clicking any nav link
+      navLinks.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          navLinks.classList.remove('open');
+          navToggle.setAttribute('aria-expanded', 'false');
+          navToggle.innerHTML = '&#9776;';
+        });
+      });
+
+      // Close menu when clicking outside
+      document.addEventListener('click', function (e) {
+        if (!navLinks.contains(e.target) && !navToggle.contains(e.target)) {
+          navLinks.classList.remove('open');
+          navToggle.setAttribute('aria-expanded', 'false');
+          navToggle.innerHTML = '&#9776;';
+        }
+      });
+    })();
+
+    // --- Interactive Tic Tac Toe Game (vs Smart Minimax AI) ---
+    (function initGame() {
+      const boardEl = document.getElementById('miniBoard');
+      const statusEl = document.getElementById('boardStatus');
+      const resetBtn = document.getElementById('resetBoard');
+      if (!boardEl || !statusEl || !resetBtn) return;
+
+      const cells = Array.from(boardEl.querySelectorAll('.cell-btn'));
+      let board = Array(9).fill(null);
+      let isGameOver = false;
+      let isAiTurn = false;
+
+      const WIN_COMBOS = [
+        [0, 1, 2], [3, 4, 5], [6, 7, 8],
+        [0, 3, 6], [1, 4, 7], [2, 5, 8],
+        [0, 4, 8], [2, 4, 6]
+      ];
+
+      function checkWinner(state) {
+        for (let i = 0; i < WIN_COMBOS.length; i++) {
+          const [a, b, c] = WIN_COMBOS[i];
+          if (state[a] && state[a] === state[b] && state[a] === state[c]) {
+            return { winner: state[a], combo: [a, b, c] };
+          }
+        }
+        if (state.every(function (cell) { return cell !== null; })) {
+          return { winner: 'draw', combo: [] };
+        }
+        return null;
+      }
+
+      function minimax(newBoard, depth, isMaximizing) {
+        const result = checkWinner(newBoard);
+        if (result) {
+          if (result.winner === 'O') return 10 - depth;
+          if (result.winner === 'X') return depth - 10;
+          if (result.winner === 'draw') return 0;
+        }
+
+        if (isMaximizing) {
+          let bestScore = -Infinity;
+          for (let i = 0; i < 9; i++) {
+            if (!newBoard[i]) {
+              newBoard[i] = 'O';
+              const score = minimax(newBoard, depth + 1, false);
+              newBoard[i] = null;
+              bestScore = Math.max(score, bestScore);
+            }
+          }
+          return bestScore;
+        } else {
+          let bestScore = Infinity;
+          for (let i = 0; i < 9; i++) {
+            if (!newBoard[i]) {
+              newBoard[i] = 'X';
+              const score = minimax(newBoard, depth + 1, true);
+              newBoard[i] = null;
+              bestScore = Math.min(score, bestScore);
+            }
+          }
+          return bestScore;
+        }
+      }
+
+      function getBestAiMove() {
+        let bestScore = -Infinity;
+        let move = -1;
+
+        for (let i = 0; i < 9; i++) {
+          if (!board[i]) {
+            board[i] = 'O';
+            const score = minimax(board, 0, false);
+            board[i] = null;
+            if (score > bestScore) {
+              bestScore = score;
+              move = i;
+            }
+          }
+        }
+        return move;
+      }
+
+      function handleCellClick(e) {
+        const idx = parseInt(e.currentTarget.getAttribute('data-idx'), 10);
+        if (board[idx] || isGameOver || isAiTurn) return;
+
+        // Player Move (X)
+        board[idx] = 'X';
+        e.currentTarget.textContent = 'X';
+        e.currentTarget.classList.add('x');
+        e.currentTarget.disabled = true;
+
+        const outcome = checkWinner(board);
+        if (outcome) {
+          handleGameOver(outcome);
+          return;
+        }
+
+        // Trigger AI Move (O)
+        isAiTurn = true;
+        statusEl.textContent = '🤖 AI is thinking...';
+        statusEl.className = 'board-status';
+
+        setTimeout(function () {
+          if (isGameOver) return;
+          const aiMove = getBestAiMove();
+          if (aiMove !== -1) {
+            board[aiMove] = 'O';
+            const aiBtn = cells[aiMove];
+            aiBtn.textContent = 'O';
+            aiBtn.classList.add('o');
+            aiBtn.disabled = true;
+
+            const aiOutcome = checkWinner(board);
+            if (aiOutcome) {
+              handleGameOver(aiOutcome);
+              isAiTurn = false;
+              return;
+            }
+          }
+
+          statusEl.textContent = 'Your turn (X)';
+          statusEl.className = 'board-status';
+          isAiTurn = false;
+        }, 280);
+      }
+
+      function handleGameOver(outcome) {
+        isGameOver = true;
+        if (outcome.winner === 'X') {
+          statusEl.textContent = '🎉 You Won! Download for 4x4-6x6';
+          statusEl.className = 'board-status win';
+          outcome.combo.forEach(function (idx) { cells[idx].classList.add('winner'); });
+        } else if (outcome.winner === 'O') {
+          statusEl.textContent = '🤖 AI Won! Reset to challenge again';
+          statusEl.className = 'board-status';
+          outcome.combo.forEach(function (idx) { cells[idx].classList.add('winner'); });
+        } else {
+          statusEl.textContent = "🤝 It's a Draw! Smart defense";
+          statusEl.className = 'board-status draw';
+        }
+      }
+
+      function resetGame() {
+        board = Array(9).fill(null);
+        isGameOver = false;
+        isAiTurn = false;
+        statusEl.textContent = 'X moves first';
+        statusEl.className = 'board-status';
+        cells.forEach(function (btn) {
+          btn.textContent = '';
+          btn.className = 'cell-btn';
+          btn.disabled = false;
+        });
+      }
+
+      cells.forEach(function (btn) { btn.addEventListener('click', handleCellClick); });
+      resetBtn.addEventListener('click', resetGame);
+    })();
+  </script>
 </body>
 </html>
